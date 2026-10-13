@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=71.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+# The `lerobot_policy_` prefix makes `lerobot-train` / `lerobot-eval` auto-import this package
+# (see `lerobot.utils.import_utils.register_third_party_plugins`), registering the policies below.
+name = "lerobot_policy_lang"
+version = "0.1.0"
+description = "Language-conditioned ACT and Diffusion Policy (BERT task embedding) as LeRobot policy plugins"
+requires-python = ">=3.12"
+dependencies = ["lerobot[diffusion,transformers-dep]"]
+
+[tool.setuptools.packages.find]
+include = ["lerobot_policy_lang*"]

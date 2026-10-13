@@ -1,0 +1,7 @@
+# upstream clone, dataset and training outputs are not tracked
+lerobot/
+data/
+outputs/
+*.egg-info/
+__pycache__/
+.pytest_cache/
