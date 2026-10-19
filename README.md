@@ -127,3 +127,16 @@ from lerobot.policies.factory import get_policy_class, make_pre_post_processors
 policy = get_policy_class("lang_act").from_pretrained("hochanb/lang_act_bert_ur5")
 pre, post = make_pre_post_processors(policy.config, pretrained_path="hochanb/lang_act_bert_ur5")
 ```
+
+## Deploying with ManiUniCon
+
+`tools/policy_server.py` in ManiUniCon (hochanb/ManiUniCon-langactor) serves these checkpoints to the dashboard's
+"5 · Evaluate" panel over HTTP. Run it from the ManiUniCon root in this env (lerobot 0.6.2 + this plugin):
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python -m tools.policy_server --checkpoint hochanb/lang_act_bert_ur5 \
+  --task "move the red cup to the blue one" --port 8080
+```
+
+Map the dashboard cameras to `camera_0` / `camera_1` and type the instruction in the task field. See
+`tools/POLICY_SERVER_API.md` there.
